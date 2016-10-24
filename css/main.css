@@ -1,0 +1,351 @@
+html { 
+  font-family: 'Open Sans', sans-serif;
+}
+
+.dimmer-background {
+	background-image: url(../images/blurry-backdrop.jpg);
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.splash {
+	background-image: url(../images/running-backdrop.jpg);
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#splash-container {
+	text-align: center;
+	z-index: -1;
+}
+
+.main-buttons {
+	margin: 15px 40%;
+	display: block;
+	border-radius: 2em;
+	background-color: transparent;
+	color: white;
+	border: 1px solid white;
+	padding: 1em 3em;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	font-weight: 100;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+#green-text {
+	color: #618e2b;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+}
+
+.main-logo {
+    max-width: 100%;
+    margin-top: .8em;
+}
+
+a {
+	font-size: 12px;
+	margin-top: 0px;
+	margin-bottom: 30px;
+	text-decoration: underline;
+	color: white;
+	cursor: pointer;
+} 
+
+#callout-link {
+	text-decoration: none;
+	cursor: pointer;
+	color: white;
+	margin-top: 30px;
+}
+
+
+#about-callout {
+	background-color: black;
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	text-align: center;
+	font-weight: 100;
+	font-size: .9em;
+	padding: 15px 100px;
+	margin: -80px 200px 20px 200px;
+	z-index: 5;
+	position: absolute;
+	display: none;
+}
+
+#close-callout {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	color: white;
+	cursor: pointer;
+	float: right;
+	margin-right: -85px;
+	margin-top: -10px;
+	font-size: 1em;
+}
+
+input[type="email"], input[type="password"] {
+	border: 1px solid white;
+	border-radius: 2em;
+	padding: 10px 30px;
+	display: block;
+	margin: 15px auto;
+	outline: none;
+	background-color: transparent;
+	color: white;
+}
+
+input[type="submit"] {
+	border-radius: 2em;
+	background-color: black;
+	color: white;
+	cursor: pointer;
+	padding: 10px;
+	width: 190px;
+	border: none;
+	margin: 10px 0px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1em;
+	outline: none;
+}
+
+.main-nav {
+	background-color: black;
+	opacity: .7;	
+}
+
+.main-nav-list { 
+	margin: 0px 0px;
+	list-style: none;
+	vertical-align: middle;
+	height: 50px;
+}
+
+.main-nav-list {
+-webkit-padding-start: 0px;
+}
+
+.main-nav-list li {
+	color: white;
+	display: inline;
+	text-decoration: none;
+	padding-left: 10px;
+	height: 50px;
+}
+
+.main-nav-list li img {
+	vertical-align: middle;
+}
+
+.main-nav-text {
+	vertical-align: middle;
+	padding-left: 5px;
+}
+
+#avatar {
+	float: right;
+}
+
+.divider {
+	border-left: thin solid white;
+   	display: inline-block;
+   	height: 100%;
+   	vertical-align: middle;
+   	margin-left: 2px;
+   	margin-right: 2px;
+}
+
+.filter-nav {
+	width: 225px;
+	height: 550px;
+	background-color: black;
+	opacity: .7;
+	margin: 10px 0 0 25px;
+	display: inline-block;
+	position: fixed;
+}
+
+h3 {
+	text-align: center;
+	color: white;
+	padding-bottom: 10px;
+	border-bottom: 1px solid white;
+}
+
+.filter-header {
+	font-weight: 400;
+	margin: 0 0 10px 0;
+	color: white;
+	text-align: center;
+	padding: 0;
+
+}
+
+#arrow {
+	display: inline;
+}
+
+.genre-dropdown {
+    display: inline-block;
+    color: black;
+    opacity: 1;
+    padding: 5px 10%;
+    margin: 5px 45px;
+    background-color: white;
+    border-radius: 10px;
+    font-family: "Roboto", sans-serif;
+    font-size: .8em;
+    outline: none;
+}
+.genre-dropdown:before {
+    content: "Select Genre";
+}
+.genre-dropdown:focus {
+    /* clicking on label should toggle the menu */
+    pointer-events: none;
+}
+.genre-dropdown:focus .genre-dropdown-content {
+    /*  opacity is 1 in opened state (see below) */
+    opacity: 1;
+    visibility: visible;
+
+    /* don't let pointer-events affect descendant elements */
+    pointer-events: auto;
+}
+.genre-dropdown-content {
+    position: absolute;
+    z-index: 1;
+
+    /* use opacity to fake immediate toggle */
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0.5s;
+}
+
+.genre-dropdown-content li {
+	margin-left: -50px;
+}
+
+.genre-dropdown-content li button {
+	width: 100%;
+	padding: 5px 30px;
+	list-style: none;
+}
+
+.genre-dropdown-content li button:hover {
+	color: #00c2b2;
+}
+
+label {
+	color: white;
+	font-weight: 300;
+	font-size: .8em;
+}
+
+input[type="checkbox"] {
+	margin: 5px 10% 5px 25%;
+}
+
+.clear-all {
+	background-color: #00c2b2;
+	color: black;
+	border-radius: 2em;
+	width: 150px;
+	margin: 10px 0px 10px 40px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-weight: 300;
+	font-size: 1em;
+	outline: none;
+	border: none;
+	cursor: pointer;
+}
+
+#slider {
+	position: relative;
+	width: 175px;
+	margin: 10px 25px 10px 25px;
+}
+
+#slider-value {
+	background-color: transparent;
+	border: none;
+	color: white;
+	margin: 10px 46%;
+	outline: none;
+}
+
+hr {
+	width: 80%;
+}
+
+#filter-button {
+	background-color: #00c2b2;
+	color: black;
+	width: 150px;
+	margin: 10px 0px 10px 40px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	font-size: 1em;
+	outline: none;
+}
+
+table {
+	float: right;
+	margin-top: 7px;
+	margin-right: 25px;
+}
+
+.artwork {
+	width: 225px;
+	height: 225px;
+	padding: 0 5px 5px 5px;
+	opacity: .7;
+	z-index: -1;
+}
+
+.artwork-cover {
+	width: 220px;
+	height: 220px;
+	padding: 0 10px 5px 0px;
+	background-color: black;
+	opacity: .7;
+	z-index: 2;
+	display: inline;
+	position: absolute;
+}
+
+.artwork-cover:hover {
+	opacity: 1;
+	cursor: pointer;
+}
+
+.playlist-info {
+	z-index: 5;
+	display: inline;
+	color: white;
+	text-align: center;
+}
+
+
+h4 {
+	padding-top: 50px;
+	font-weight: 400;
+	margin-bottom: 10px;
+}
+
+h5 {
+	font-weight: 300;
+	margin: 5px 0 0 0;
+}
+
+

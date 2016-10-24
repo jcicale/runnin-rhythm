@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Runnin Rhythm</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+</head>
+<body class="dimmer-background">
+	<nav class="main-nav">
+		<ul class="main-nav-list">
+			<li>
+				<img src="images/small-logo.png">
+			</li>
+			<li>
+				<span class="divider"></span>
+				<img src="images/star-icon.png">
+				<span class="main-nav-text">Popular</span>
+			</li>
+			<li>
+				<span class="divider"></span>
+				<img src="images/list-icon.png">
+				<span class="main-nav-text">My Playlists</span>
+			</li>
+			<li>
+				<span class="divider"></span>
+				<img src="images/plus-icon.png">
+				<span class="main-nav-text">New Playlist</span>
+				<span class="divider"></span>
+			</li>
+			<li>
+				<img id="avatar" src="images/sample-avatar.png"></a>
+			</li>
+		</ul>
+	</nav>
+	<nav class="filter-nav">
+		<div>
+			<h3>Filter Results</h3>			
+		</div>
+		<div>
+			<div class="filters" id="genre-filter">
+				<h4 class="filter-header">Genre</h4>
+				<div tabindex="0" class="genre-dropdown">
+					<img src="images/drop-down-arrow.png" id="arrow">
+				    <ul class="genre-dropdown-content">
+				        <li><button onclick="">Rock</button></li>
+				        <li><button onclick="">Pop</button></li>
+				        <li><button onclick="">Hip-Hop</button></li>
+				    </ul>
+				</div>
+			</div>
+			<hr>
+			<div class="filters" id="pace-filter">
+				<h4 class="filter-header">Pace</h4>
+				<div class="checkboxes">
+					<label>
+						<input type="checkbox" name="cbox1" value="6:00-6:45" checked="true"> 6:00-6:45
+					</label>
+					<br>
+					<label>
+						<input type="checkbox" name="cbox2" value="7:00-7:45" checked="true"> 7:00-7:45
+					</label>
+					<br>
+					<label>
+						<input type="checkbox" name="cbox3" value="8:00-8:45" checked="true"> 8:00-8:45
+					</label>
+					<br>
+					<label>
+						<input type="checkbox" name="cbox4" value="9:00-9:45" checked="true"> 9:00-9:45
+					</label>
+					<br>
+					<label>
+						<input type="checkbox" name="cbox5" value="10:00-10:45" checked="true"> 10:00-10:45
+					</label>
+					<br>
+					<button class="clear-all">Clear All</button>
+				</div>					
+			</div>
+			<hr>
+			<div class="filters" id="length-filter">
+				<h4 class="filter-header">Length (Miles)</h4>
+				<input id="slider" type="range" min="0" max="15" step=".25" value="3" onchange="updateLengthFilter(this.value)"/>
+				<input type="text" id="slider-value" value="3" onchange="updateSlider(this.value)">
+			</div>
+			<hr>
+			<form>
+					<input type="submit" name="filter-button" id="filter-button">		
+			</form>
+		</div>
+	</nav>
+	<table>
+		<tr class="album-art" id="row1">
+			<td>
+				<div class="artwork-cover">
+					<div class="playlist-info">
+						<h4>Groovin' 5K!</h4>
+						<h5>Pace: 9:30</h5>
+						<h5>Length: 3.1 Miles</h5>
+						<h5>Genre: Pop</h5>
+					</div>
+				</div>
+				<img src="images/album-art/adele.jpg" class="artwork">
+			</td>
+			<td>
+				<div class="artwork-cover">
+					<div class="playlist-info">
+						<h4>Tempo Run</h4>
+						<h5>Pace: 7:00</h5>
+						<h5>Length: 2.5 Miles</h5>
+						<h5>Genre: Mix</h5>
+					</div>
+				</div>
+				<img src="images/album-art/arcticmonkeys.png" class="artwork">
+			</td>
+			<td>
+				<div class="artwork-cover">
+					<div class="playlist-info">
+						<h4>Run Free</h4>
+						<h5>Pace: 9:00</h5>
+						<h5>Length: 8 Miles</h5>
+						<h5>Genre: Indie</h5>
+					</div>
+				</div>
+				<img src="images/album-art/chiddybang.jpg" class="artwork">
+			</td>
+			<td>
+				<div class="artwork-cover">
+					<div class="playlist-info">
+						<h4>Daily Run</h4>
+						<h5>Pace: 8:00</h5>
+						<h5>Length: 4 Miles</h5>
+						<h5>Genre: Rock</h5>
+					</div>
+				</div>
+				<img src="images/album-art/bicycle.jpg" class="artwork">
+			</td>
+		</tr>
+		<tr class="album-art" id="row2">
+			<td>
+				<div class="artwork-cover">
+					<div class="playlist-info">
+						<h4>Groovin' 5K!</h4>
+						<h5>Pace: 9:30</h5>
+						<h5>Length: 3.1 Miles</h5>
+						<h5>Genre: Pop</h5>
+					</div>
+				</div>
+				<img src="images/album-art/cake.jpg" class="artwork">
+			</td>
+			<td>
+				<div class="artwork-cover">
+					<div class="playlist-info">
+						<h4>Tempo Run</h4>
+						<h5>Pace: 7:00</h5>
+						<h5>Length: 2.5 Miles</h5>
+						<h5>Genre: Mix</h5>
+					</div>
+				</div>
+				<img src="images/album-art/benfolds.jpg" class="artwork">
+			</td>
+			<td>
+				<div class="artwork-cover">
+					<div class="playlist-info">
+						<h4>Run Free</h4>
+						<h5>Pace: 9:00</h5>
+						<h5>Length: 8 Miles</h5>
+						<h5>Genre: Indie</h5>
+					</div>
+				</div>
+				<img src="images/album-art/rilokiley.jpg" class="artwork">
+			</td>
+			<td>
+				<div class="artwork-cover">
+					<div class="playlist-info">
+						<h4>Daily Run</h4>
+						<h5>Pace: 8:00</h5>
+						<h5>Length: 4 Miles</h5>
+						<h5>Genre: Rock</h5>
+					</div>
+				</div>
+				<img src="images/album-art/phoenix.png" class="artwork">
+			</td>
+		</tr>
+		<tr class="album-art" id="row3">
+			<td>
+				<div class="artwork-cover">
+					<div class="playlist-info">
+						<h4>Groovin' 5K!</h4>
+						<h5>Pace: 9:30</h5>
+						<h5>Length: 3.1 Miles</h5>
+						<h5>Genre: Pop</h5>
+					</div>
+				</div>
+				<img src="images/album-art/fun.jpg" class="artwork">
+			</td>
+			<td>
+				<div class="artwork-cover">
+					<div class="playlist-info">
+						<h4>Tempo Run</h4>
+						<h5>Pace: 7:00</h5>
+						<h5>Length: 2.5 Miles</h5>
+						<h5>Genre: Mix</h5>
+					</div>
+				</div>
+				<img src="images/album-art/passionpit.jpg" class="artwork">
+			</td>
+			<td>
+				<div class="artwork-cover">
+					<div class="playlist-info">
+						<h4>Run Free</h4>
+						<h5>Pace: 9:00</h5>
+						<h5>Length: 8 Miles</h5>
+						<h5>Genre: Indie</h5>
+					</div>
+				</div>
+				<img src="images/album-art/monsters.jpg" class="artwork">
+			</td>
+			<td>
+				<div class="artwork-cover">
+					<div class="playlist-info">
+						<h4>Daily Run</h4>
+						<h5>Pace: 8:00</h5>
+						<h5>Length: 4 Miles</h5>
+						<h5>Genre: Rock</h5>
+					</div>
+				</div>
+				<img src="images/album-art/generationals.jpg" class="artwork">
+			</td>
+		</tr>
+		<tr class="album-art" id="row4">
+			<td>
+				<div class="artwork-cover">
+					<div class="playlist-info">
+						<h4>Groovin' 5K!</h4>
+						<h5>Pace: 9:30</h5>
+						<h5>Length: 3.1 Miles</h5>
+						<h5>Genre: Pop</h5>
+					</div>
+				</div>
+				<img src="images/album-art/m83.png" class="artwork">
+			</td>
+			<td>
+				<div class="artwork-cover">
+					<div class="playlist-info">
+						<h4>Tempo Run</h4>
+						<h5>Pace: 7:00</h5>
+						<h5>Length: 2.5 Miles</h5>
+						<h5>Genre: Mix</h5>
+					</div>
+				</div>
+				<img src="images/album-art/lykkeli.jpg" class="artwork">
+			</td>
+			<td>
+				<div class="artwork-cover">
+					<div class="playlist-info">
+						<h4>Run Free</h4>
+						<h5>Pace: 9:00</h5>
+						<h5>Length: 8 Miles</h5>
+						<h5>Genre: Indie</h5>
+					</div>
+				</div>
+				<img src="images/album-art/jukebox.jpg" class="artwork">
+			</td>
+			<td>
+				<div class="artwork-cover">
+					<div class="playlist-info">
+						<h4>Daily Run</h4>
+						<h5>Pace: 8:00</h5>
+						<h5>Length: 4 Miles</h5>
+						<h5>Genre: Rock</h5>
+					</div>
+				</div>
+				<img src="images/album-art/mattkim.jpg" class="artwork">
+			</td>
+		</tr>
+	</table>
+
+	
+
+
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
