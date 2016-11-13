@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Runnin Rhythm</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/grid.css">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<script src="https://use.fontawesome.com/51b8c3ed25.js"></script>
+</head>
+<body class="dimmer-background">
+	<nav class="main-nav col-20" >
+		<ul class="main-nav-list fa-ul">
+			<li class="col-2"><img src="images/small-logo.png"></li>
+			<li class="main-nav-text col-2"><span class="fa-li fa fa-star-o"></span>Popular</li>
+			<li class="main-nav-text col-2"><span class="fa-li fa fa-list-ul"></span>My Playlists</li>
+			<li class="main-nav-text col-2"><span class="fa-li fa fa-plus"></span>New Playlist</li>
+			<li><img id="avatar" src=""></li>
+		</ul>
+	</nav>
+	<nav class="filter-nav col-4">
+		<div>
+			<h3>Filter Results</h3>			
+		</div>
+		<div>
+			<div class="filters" id="genre-filter">
+				<h4 class="filter-header">Genre</h4>
+				<div tabindex="0" class="genre-dropdown col-15">
+					<img src="images/drop-down-arrow.png" id="arrow">
+				    <ul class="genre-dropdown-content">
+				        <li><button onclick="">Rock</button></li>
+				        <li><button onclick="">Pop</button></li>
+				        <li><button onclick="">Hip-Hop</button></li>
+				    </ul>
+				</div>
+			</div>
+			<hr>
+			<div class="filters" id="pace-filter">
+				<h4 class="filter-header">Pace</h4>
+				<div class="checkboxes">
+					<label>
+						<input type="checkbox" name="cbox1" value="6:00-6:45" checked="true"> 6:00-6:45
+					</label>
+					<br>
+					<label>
+						<input type="checkbox" name="cbox2" value="7:00-7:45" checked="true"> 7:00-7:45
+					</label>
+					<br>
+					<label>
+						<input type="checkbox" name="cbox3" value="8:00-8:45" checked="true"> 8:00-8:45
+					</label>
+					<br>
+					<label>
+						<input type="checkbox" name="cbox4" value="9:00-9:45" checked="true"> 9:00-9:45
+					</label>
+					<br>
+					<label>
+						<input type="checkbox" name="cbox5" value="10:00-10:45" checked="true"> 10:00-10:45
+					</label>
+					<br>
+					<button class="clear-all col-15">Clear All</button>
+				</div>					
+			</div>
+			<hr>
+			<div class="filters" id="length-filter">
+				<h4 class="filter-header">Length (Miles)</h4>
+				<input id="slider" class="col-16" type="range" min="0" max="15" step=".25" value="3" onchange="updateLengthFilter(this.value)"/>
+				<input type="text" id="slider-value" value="3" onchange="updateSlider(this.value)">
+			</div>
+			<hr>
+			<form>
+					<input type="submit" name="filter-button" id="filter-button" class="col-15">		
+			</form>
+		</div>
+	</nav>
+	<section class="col-15 flex-container" id="playlist-container">
+		<!-- <div class="artwork-cover flex-item">
+			<div class="playlist-info">
+				<h4>Groovin' 5K!</h4>
+				<h5>Pace: 9:30</h5>
+				<h5>Length: 3.1 Miles</h5>
+				<h5>Genre: Pop</h5>
+			</div>
+		</div>
+		<img src="images/album-art/adele.jpg" class="artwork"> -->
+	</section>
+	<button id="add-playlist">Add Playlist</button>
+
+	
+
+
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/account-home.js"></script>
+
+</body>
+</html>

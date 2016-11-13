@@ -1,0 +1,116 @@
+/*
+reset all elements box-sizing property to border-box...
+element total widths and heights now include padding and border
+*/
+* {
+    box-sizing: border-box;
+}
+
+/* generic column styling */
+[class*="col-"] {
+    position: relative;
+    float:left;
+}
+
+/* siblings to preceding column - specify gutter*/
+[class*="col-"] + [class*="col-"] {
+    margin-left: 1.6%;
+}
+
+/* columns by permitted section span - eg: 2 columns, 5 columns...gutters included*/
+.col-1 {
+    width: 5%;
+}
+.col-2 {
+    width: 10%;
+}
+.col-3 {
+    width: 15%;
+}
+.col-4 {
+    width: 20%;
+}
+.col-5 {
+    width: 25%;
+}
+.col-6 {
+    width: 30%;
+}
+.col-7 {
+    width: 35%;
+}
+.col-8 {
+    width: 40%;
+}
+.col-9 {
+    width: 45%;
+}
+.col-10 {
+    width: 50%;
+}
+.col-11 {
+    width: 55%;
+}
+.col-12 {
+    width: 60%;
+}
+.col-13 {
+    width: 65%;
+}
+.col-14 {
+    width: 70%;
+}
+.col-15 {
+    width: 75%;
+}
+.col-16 {
+    width: 80%;
+}
+.col-17 {
+    width: 85%;
+}
+.col-18 {
+    width: 90%;
+}
+.col-19 {
+    width: 95%;
+}
+.col-20 {
+    width: 100%;
+}
+
+/* style each row */
+.row {
+    padding: 5px;
+}
+
+/* ensure later elements do not ignore and override the column rows */
+.row:before, .row:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+/*flexbox*/
+.flex-container {
+    display: flex; /* defines container as flex */
+    flex-direction: row; /* defines positioning of items added to container */
+    flex-wrap: wrap; /* defines whether to wrap items to another line */
+    justify-content: flex-start; /* defines start point and distribution of items */
+}
+
+.flex-item {
+    flex: 0 1 225px; /* default size before extra */
+    margin: 5px;
+}
+
+/* define mobile */
+@media only screen and (max-width: 768px) {
+    [class*="col-"] {
+        width: 100%;
+    }
+
+    [class*="col-"] + [class*="col-"] {
+        margin-left:0;
+    }
+}
