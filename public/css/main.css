@@ -1,5 +1,5 @@
 html { 
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans';
 }
 
 .dimmer-background {
@@ -246,7 +246,7 @@ input[type="checkbox"] {
 	cursor: pointer;
 }
 
-#slider {
+#slider-filter {
 	position: relative;
 	margin: 10px 25px 10px 25px;
 }
@@ -276,7 +276,7 @@ hr {
 	outline: none;
 }
 
-#playlist-container {
+#playlists-container {
 	margin-top: 10px;
 }
 
@@ -321,4 +321,87 @@ h5 {
 	margin: 5px 0 0 0;
 }
 
+#slider {
+	background-color: black;
+	color: white;
+	overflow: scroll;
+	padding-bottom: 7%;
+}
 
+.playlist-img {
+	height: 225px;
+	width: 225px;
+	margin: 20px;
+	float: left;
+}
+
+.playlist-header h2, .playlist-header h3, .playlist-header h4 {
+	display: block;
+	border: none;
+}
+.playlist-header h2 {
+	margin: 8px 5px;
+}
+
+.playlist-header h3 {
+	text-align: left;
+	margin: 0;
+	font-family: 'Roboto';
+	font-size: 1em;
+}
+
+.playlist-header h4 {
+	padding: 3em 0 0 0;
+	color: #4c4c4c;
+	margin: 0;
+	font-weight: 700;
+	font-size: .8em;
+}
+
+.playlist-header button {
+	padding: .5em 1em;
+	border-radius: 2em;
+	outline: none;
+	border: none;
+	cursor: pointer;
+	background-color: #00c2b2;
+	color: #004741;
+	font-family: 'Roboto';
+	font-size: .9em;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+#export-spotify-btn {
+	background-color: #618e2b;
+	color: white;
+}
+
+.playlist-wrapper {
+	display: block;
+	clear: both;
+}
+
+caption {
+	text-align: left;
+	margin: 0px 2em;
+	color: #4c4c4c;
+	font-weight: 400;
+	font-size: .9em;
+}
+
+
+.row td {
+	text-align: center;
+	font-weight: 300;
+	font-family: 'Open Sans';
+	padding: 10px;
+	margin: 5px;
+	border-bottom: 1px solid #4c4c4c;
+}
+
+.thread-row td {
+	color: #4c4c4c;
+	font-weight: 700;
+	font-size: .9em;
+}

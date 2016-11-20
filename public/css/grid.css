@@ -97,6 +97,7 @@ element total widths and heights now include padding and border
     flex-direction: row; /* defines positioning of items added to container */
     flex-wrap: wrap; /* defines whether to wrap items to another line */
     justify-content: flex-start; /* defines start point and distribution of items */
+    overflow: auto;
 }
 
 .flex-item {
