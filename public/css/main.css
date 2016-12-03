@@ -176,7 +176,7 @@ h3 {
 	cursor: pointer;
 }
 
-.genre-dropdown {
+.dropdown {
     display: inline-block;
     color: black;
     opacity: 1;
@@ -188,16 +188,19 @@ h3 {
     font-size: 1em;
     outline: none;
 }
-.genre-dropdown:before {
+#filter-genre-dropdown:before {
     content: "Select Genre";
-    margin: auto;
+}
+.dropdown:before {
+	margin: auto;
     cursor: pointer;
 }
-.genre-dropdown:focus {
+
+.dropdown:focus {
     /* clicking on label should toggle the menu */
     pointer-events: none;
 }
-.genre-dropdown:focus .genre-dropdown-content {
+.dropdown:focus .dropdown-content {
     /*  opacity is 1 in opened state (see below) */
     opacity: 1;
     visibility: visible;
@@ -207,21 +210,26 @@ h3 {
     /* don't let pointer-events affect descendant elements */
     pointer-events: auto;
 }
-.genre-dropdown-content {
+.dropdown-content {
     position: absolute;
     z-index: 1;
-
     /* use opacity to fake immediate toggle */
     opacity: 0;
     visibility: hidden;
     transition: visibility 0.5s;
+    height: 200px;
+	overflow: auto;
+	list-style-type: none;
+	-webkit-padding-start: 0px;
+	width: 85%;
+	margin-left: -15%;
 }
 
-.genre-dropdown-content li {
-	margin-left: -57px;
+.dropdown-content li {
+	width: 100%;
 }
 
-.genre-dropdown-content li button {
+.dropdown-content li button {
 	width: 100%;
 	padding: 5px 30px;
 	list-style: none;
@@ -229,7 +237,7 @@ h3 {
     font-size: 1em;
 }
 
-.genre-dropdown-content li button:hover {
+.dropdown-content li button:hover {
 	color: #00c2b2;
 	cursor: pointer;
 }
@@ -440,7 +448,6 @@ caption {
 #create-playlist-modal h5 {
 	text-align: center;
 	font-size: 1em;
-
 }
 
 input[type="number"] {
@@ -453,3 +460,15 @@ input[type="number"] {
 	width: 50%;
 }
 
+#modal-pace-dropdown:before {
+    content: "Select Pace";
+}
+
+#modal-pace-dropdown {
+	float: none;
+	margin: 10px 25%;
+}
+
+#modal-pace-dropdown ul {
+	margin-left: -22%;
+}
