@@ -26,6 +26,8 @@ var slider = $('#slider').slideReveal({
 	overlayColor: 'rgba(0,0,0,.5)'
 });
 
+$("#slider").addClass("slider-class");
+
 //dynamically add playlists
 function addPlaylist() {
 		var $background = $("<div>");
@@ -118,7 +120,12 @@ function getAudioProfile(tracks) {
     	success: function(response) {
       		var audioProfileDictionary = convertAudioProfilesToDictionary(response.audio_features);
       		var tracksWithAudioProfiles = addAudioProfileToTrack(tracks, audioProfileDictionary);
-      		console.log(tracksWithAudioProfiles);
+      		var average = 0;
+      		for (var i = 0; i < tracksWithAudioProfiles.length; i++) {
+      			average += tracksWithAudioProfiles[i].audioProfile.tempo;
+      		}
+      		average = average/50;
+      		console.log(average);
     	},
     	data: {
     		"ids" : trackIDs.join()
@@ -140,7 +147,6 @@ function addAudioProfileToTrack(tracks, audioProfiles) {
 		var track = tracks[i];
 		track.audioProfile = audioProfiles[track.id];
 	}
-	console.log(tracks);
 	return tracks;
 }
 
