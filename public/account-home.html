@@ -15,54 +15,33 @@
 </head>
 <body class="dimmer-background">
 	<div id="create-playlist-modal" style="display:none;">
-	    <h3>Create New Playlist</h3>
-	    <p> To create a new playlist, please enter the following information</p>
-	    <h5>How many miles are you running today?</h5>
-	    <input type="number" name="run-length" min="0" max="20" value="3" required="true">
-	    <h5>How fast would you like to run today?</h5>
-	    <div tabindex="0" class="dropdown col-10" id="modal-pace-dropdown">
-			<img src="images/drop-down-arrow.png" id="arrow">
-		    <ul class="dropdown-content">
-		        <li><button onclick="">6:00 per mile</button></li>
-		        <li><button onclick="">6:15 per mile</button></li>
-		        <li><button onclick="">6:30 per mile</button></li>
-		        <li><button onclick="">6:45 per mile</button></li>
-		        <li><button onclick="">7:00 per mile</button></li>
-		        <li><button onclick="">7:15 per mile</button></li>
-		        <li><button onclick="">7:30 per mile</button></li>
-		        <li><button onclick="">7:45 per mile</button></li>
-		        <li><button onclick="">8:00 per mile</button></li>
-		        <li><button onclick="">8:15 per mile</button></li>
-		        <li><button onclick="">8:30 per mile</button></li>
-		        <li><button onclick="">8:45 per mile</button></li>
-		        <li><button onclick="">9:00 per mile</button></li>
-		        <li><button onclick="">9:15 per mile</button></li>
-		        <li><button onclick="">9:30 per mile</button></li>
-		        <li><button onclick="">9:45 per mile</button></li>
-		        <li><button onclick="">10:00 per mile</button></li>
-		        <li><button onclick="">10:15 per mile</button></li>
-		        <li><button onclick="">10:30 per mile</button></li>
-		        <li><button onclick="">10:45 per mile</button></li>
-		        <li><button onclick="">11:00 per mile</button></li>
-		        <li><button onclick="">11:15 per mile</button></li>
-		        <li><button onclick="">11:30 per mile</button></li>
-		        <li><button onclick="">11:45 per mile</button></li>
-		        <li><button onclick="">12:00 per mile</button></li>
-		    </ul>
+		<div id="modal-container">
+		    <h3>Create New Playlist</h3>
+		    <p> To create a new playlist, please enter the following information</p>
+		    <h5> First, add a name for your playlist </h5>
+		    <input type="text" placeholder="New Playlist Name" name="playlist-name" id="playlist-name">
+		    <h5>How many miles are you running today?</h5>
+		    <input type="number" name="run-length" min="0" max="20" value="3" required="true" id="run-length">
+		    <h5>What is your desired pace per mile?</h5>
+		    <div tabindex="0" class="dropdown col-10" id="modal-pace-dropdown">
+		    	<div>
+		    		<span id="modal-pace-dropdown-title">Select Pace</span>
+					<img src="images/drop-down-arrow.png" id="arrow">
+				</div>
+			    <ul class="dropdown-content">
+			    </ul>
+			</div>
+		    <h5>What kind of music would you like to hear?</h5>
+		    <div tabindex="0" class="dropdown col-10" id="modal-genre-dropdown">
+				<div>
+		    		<span id="modal-genre-dropdown-title">Select Genre</span>
+					<img src="images/drop-down-arrow.png" id="arrow">
+				</div>
+			    <ul class="dropdown-content">
+			    </ul>
+			</div>
+			<button id="generate-playlist" onclick="">Generate Playlist</button>
 		</div>
-	    <h5>What kind of music would you like to hear?</h5>
-	    <div tabindex="0" class="dropdown col-10" id="modal-genre-dropdown">
-			<img src="images/drop-down-arrow.png" id="arrow">
-		    <ul class="dropdown-content">
-		        <li><button onclick="">Alternative</button></li>
-		        <li><button onclick="">Electronic</button></li>
-		        <li><button onclick="">Hip-Hop</button></li>
-		        <li><button onclick="">Indie</button></li>
-		        <li><button onclick="">Pop</button></li>
-		        <li><button onclick="">Rock</button></li>
-		    </ul>
-		</div>
-		<button id="generate-playlist" onclick="">Generate Playlist</button>
   	</div>
 	<nav class="main-nav col-20" >
 		<ul class="main-nav-list fa-ul">
@@ -81,14 +60,11 @@
 			<div class="filters" id="genre-filter">
 				<h4 class="filter-header">Genre</h4>
 				<div tabindex="0" class="dropdown col-14" id="filter-genre-dropdown">
-					<img src="images/drop-down-arrow.png" id="arrow">
+					<div>
+	    				<span id="filter-genre-dropdown-title">Select Genre</span>
+						<img src="images/drop-down-arrow.png" id="arrow">
+					</div>
 				    <ul class="dropdown-content">
-				        <li><button onclick="">Alternative</button></li>
-				        <li><button onclick="">Electronic</button></li>
-				        <li><button onclick="">Hip-Hop</button></li>
-				        <li><button onclick="">Indie</button></li>
-				        <li><button onclick="">Pop</button></li>
-				        <li><button onclick="">Rock</button></li>
 				    </ul>
 				</div>
 			</div>
@@ -315,6 +291,7 @@
 
 <script src="js/jquery-1.11.2.min.js"></script>
 <script src="js/jquery.slidereveal.min.js"></script>
+<script src="js/spin.min.js"></script>
 <script src="js/jquery.modal.min.js"></script>
 <script src="js/account-home.js"></script>
 

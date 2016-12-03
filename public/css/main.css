@@ -188,9 +188,6 @@ h3 {
     font-size: 1em;
     outline: none;
 }
-#filter-genre-dropdown:before {
-    content: "Select Genre";
-}
 .dropdown:before {
 	margin: auto;
     cursor: pointer;
@@ -235,11 +232,17 @@ h3 {
 	list-style: none;
 	font-family: "Roboto", sans-serif;
     font-size: 1em;
+    pointer-events: none;
 }
 
-.dropdown-content li button:hover {
+.dropdown-content li:hover button {
 	color: #00c2b2;
 	cursor: pointer;
+}
+
+.dropdown div {
+	text-align: center;
+	width: 100%;
 }
 
 label {
@@ -437,6 +440,7 @@ caption {
 	background-color: black;
 	color: white;
 	font-family: "Roboto", sans-serif;
+	height: 90%;
 
 }
 
@@ -451,7 +455,7 @@ caption {
 	margin-top:10px;
 }
 
-input[type="number"] {
+input[type="number"], input[type="text"] {
 	margin: 10px 25%;
 	outline: none;
 	border-radius: 1em;
@@ -462,12 +466,9 @@ input[type="number"] {
 	font-family: "Roboto", sans-serif;
 }
 
-#modal-pace-dropdown:before {
-    content: "Select Pace";
-}
 
-#modal-genre-dropdown:before {
-    content: "Select Genre";
+.dropdown {
+    cursor: pointer;
 }
 
 #modal-pace-dropdown, #modal-genre-dropdown {
