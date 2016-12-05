@@ -2,9 +2,12 @@
 function myPlaylists() {
 	var newPlaylist = getUrlParameter("new-playlist");
 	if (newPlaylist == "true") {
-		console.log('hello nick');
 		$("#create-playlist-modal").modal();
 	}
+	$("#new-playlist").attr("href", "#");
+	$("#new-playlist").on("click", function(){
+		$("#create-playlist-modal").modal();
+	})
 };
 
 $(document).ready(myPlaylists);

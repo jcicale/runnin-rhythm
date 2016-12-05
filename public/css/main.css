@@ -535,10 +535,15 @@ caption {
 .row td {
 	text-align: center;
 	font-weight: 300;
-	font-family: 'Open Sans';
+	font-family: 'Open Sans', sans-serif;
 	padding: 10px;
 	margin: 5px;
 	border-bottom: 1px solid #4c4c4c;
+}
+
+.song-row td a{
+	color: white;
+	font-size: 1em;
 }
 
 .thread-row td {

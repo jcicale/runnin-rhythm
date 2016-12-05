@@ -100,8 +100,9 @@ $("#generate-playlist").on("click", function(){
 		//$.modal.close();
 });
 
+
 //filter checkbox
-$('.clear-all').on('click', function(){
+$('.clear-all').on('click', function() {
 	$('input:checkbox[name=cbox1]').attr('checked', false);
 	$('input:checkbox[name=cbox2]').attr('checked', false);
 	$('input:checkbox[name=cbox3]').attr('checked', false);
@@ -141,9 +142,16 @@ var slider = $('#slider').slideReveal({
 
 $("#slider").addClass("slider-class");
 
+function createPlaylistListener(playlist) {
+  return function() {
+    $("#slider").removeClass("slider-mask");
+      showPlaylist(playlist);
+      slider.slideReveal("toggle");
+      
+  }
+}
 //dynamically add playlists
 function addPlaylist(playlistObject) {
-    console.log(JSON.stringify(playlistObject));
 		var $background = $("<div>");
 		var $cover = $("<div>");
 		function addInformation(playlistObject) {
@@ -162,10 +170,7 @@ function addPlaylist(playlistObject) {
 		$background.css("background-image", "url('" + playlistObject.backgroundImage + "')");
 		$cover.append(addInformation(playlistObject));
 
-		$cover.on('click', function() {
-      $("#slider").removeClass("slider-mask");
-			slider.slideReveal("toggle");
-		});
+		$cover.on('click', createPlaylistListener(playlistObject));
 
 	}
 
@@ -306,7 +311,6 @@ function createPlaylist(playlistName, paceSelection, runLengthSelection, genreSe
     var track = tracks[i];
     selectedTracks.push(track);
     durationCountdown -= track.duration_ms;
-    console.log('adding track');
     i++;
   }
 
@@ -317,7 +321,8 @@ function createPlaylist(playlistName, paceSelection, runLengthSelection, genreSe
       genre: genreSelection,
       tracks: selectedTracks,
       complete: durationCountdown <= 0,
-      backgroundImage: selectedTracks[0].album.images[1].url
+      backgroundImage: selectedTracks[0].album.images[1].url,
+      duration: (paceInMilliseconds * runLengthSelection) + durationCountdown
     };
 
     return playlist;
@@ -360,6 +365,7 @@ function getTracksFromSpotify(playlistName, runLengthSelection, paceSelection, g
   });
 }
 
+var userID = "";
 
 //get user info from spotify
 function loadUser() {
@@ -371,8 +377,83 @@ function loadUser() {
     	},
     	success: function(response) {
       		$('#avatar-img').attr('src', response.images[0].url);
+          userID = response.id;
     	}
 	});
+}
+
+function convertMillisecondsToString(milliseconds){
+    var seconds = parseInt((milliseconds/1000)%60), 
+        minutes = parseInt((milliseconds/(1000*60))%60),
+        hours = parseInt((milliseconds/(1000*60*60))%24);
+
+    minutes = (minutes < 10) ? "0" + minutes : minutes;
+    seconds = (seconds < 10) ? "0" + seconds : seconds;
+    hours = (hours < 10) ? "0" + hours : hours;
+
+    if (hours != 0) {
+      return hours + ":" + minutes + ":" + seconds
+    } else {
+      return minutes + ":" + seconds;
+    }
+
+    
+}
+
+function showPlaylist(playlist) {
+  $(".playlist-img").attr("src", playlist.backgroundImage);
+  $("#slider-playlist-name").html(playlist.name);
+  $("#slider-pace").html("Pace: " + playlist.pace);
+  $("#slider-length").html("Length: " + playlist.length);
+  $("#slider-genre").html("Genre: " + playlist.genre);
+  $("#total-time").html(convertMillisecondsToString(playlist.duration));
+  $("#num-songs").html(playlist.tracks.length + " songs");
+  $("#slider-table .song-row").empty();
+
+  for (var i = 0; i < playlist.tracks.length; i++) {
+    var track = playlist.tracks[i];
+    var row = $("<tr>");
+    row.addClass("row");
+    row.addClass("song-row");
+    row.append("<td><a target='_blank' href='" + track.external_urls.spotify + "'>" + track.name + "</a></td>");
+    row.append("<td><a target='_blank' href='" + track.external_urls.spotify + "'>" + track.artists.map(function(artist){return artist.name}).join(", ") + "</a></td>");
+    row.append("<td><a target='_blank' href='" + track.external_urls.spotify + "'>" + track.album.name + "</a></td>");
+    row.append("<td>" + convertMillisecondsToString(track.duration_ms) + "</td>");
+    $("#slider-table").append(row);
+  }
+  var access_token = getUrlParameter('access_token');
+  $("#export-spotify-btn").on('click', function(){
+    var playlistUrl = "";
+    var createPlaylist = $.ajax({
+      headers: {
+          'Authorization': 'Bearer ' + access_token,
+          'Content-Type' : 'application/json'
+      },
+      type: "POST",
+      url: "https://api.spotify.com/v1/users/" + userID + "/playlists",
+      data: JSON.stringify({
+        name: playlist.name
+      })
+    });
+    var done = createPlaylist.then(function(data) {
+      playlistUrl = data.external_urls.spotify
+      return $.ajax({
+        headers: {
+          'Authorization': 'Bearer ' + access_token
+        },
+        type: "POST",
+        url: "https://api.spotify.com/v1/users/" + userID + "/playlists/" + data.id + "/tracks",
+        data: JSON.stringify({
+          uris: playlist.tracks.map(function(track){
+            return track.uri;
+          })
+        })
+      });
+    });
+    done.done(function(data){
+      window.open(playlistUrl, "_blank");
+    });
+  });
 }
 
 $(document).ready(onDocumentReady);
