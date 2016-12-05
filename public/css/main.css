@@ -27,7 +27,7 @@ html {
 	z-index: -1;
 }
 
-.main-buttons {
+#spotify-login-button {
 	margin: 15px 40%;
 	display: block;
 	border-radius: 2em;
@@ -43,27 +43,18 @@ html {
 }
 
 #green-text {
-	color: #618e2b;
+	color: #648f00;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 700;
 }
 
 .main-logo {
     max-width: 100%;
-    margin-top: .8em;
+    margin-top: 5%;
 }
 
-a {
-	font-size: 12px;
-	margin-top: 0px;
-	margin-bottom: 30px;
-	text-decoration: underline;
-	color: white;
-	cursor: pointer;
-} 
-
 #callout-link {
-	text-decoration: none;
+	text-decoration: underline;
 	cursor: pointer;
 	color: white;
 	margin-top: 30px;
@@ -78,7 +69,7 @@ a {
 	font-weight: 100;
 	font-size: .9em;
 	padding: 15px 100px;
-	margin: -80px 200px 20px 200px;
+	margin: -25px 200px 20px 200px;
 	z-index: 5;
 	position: absolute;
 	display: none;
@@ -106,7 +97,7 @@ input[type="email"], input[type="password"] {
 	color: white;
 }
 
-input[type="submit"] {
+#splash-container input[type="submit"] {
 	border-radius: 2em;
 	background-color: black;
 	color: white;
@@ -127,22 +118,122 @@ input[type="submit"] {
 	padding: 0px;
 }
 
-.main-nav-list li, .main-nav-list li a {
-	color: white;
-	cursor: pointer;
-	font-family: 'Roboto', sans-serif;
-	font-size: 1.1em;
-	text-decoration: none;
+/* Remove margins and padding from the list, and add a black background color */
+ul.top-nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Float the list items side by side */
+ul.top-nav li {
+	float: left;
+	padding-top: 8px;
+	padding-left: 2%;
+}
+
+.fa-li {
+	padding-top: 8px;
+	padding-left: 2%;
+	position: static;
 }
 
 #avatar {
 	float: right;
+    margin-top: 5px;
+    margin-bottom: -10px;
+}
+#avatar-img {
 	height: 75%;
 	width: 40px;
 	border-radius: 50%;
 	border: 1px solid white;
 	margin: -7px 10px 10px 0;
 }
+
+/* Style the links inside the list items */
+ul.top-nav li a {
+    display: inline;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 1em;
+    font-family: "Roboto", sans-serif;
+    color: white;
+}
+
+/* Change background color of links on hover */
+ul.top-nav li a:hover {
+	color: #00c2b2;
+}
+
+ul.top-nav li a.selected {
+	color: #00c2b2;
+}
+
+/* Hide the list item that contains the link that should open and close the topnav on small screens */
+ul.top-nav li.hamburger {
+	display: none;
+}
+
+/* When the screen is less than 680 pixels wide, hide all list items, except for the first one ("Home"). Show the list item that contains the link to open and close the topnav (li.icon) */
+@media screen and (max-width:680px) {
+	ul.top-nav li:not(:last-child) {
+  		display: none;
+	}
+	#avatar {
+		display: none;
+	}
+	ul.top-nav li:first-child {
+		display: inline-block;
+	}
+	ul.top-nav li.hamburger {
+    	float: right;
+    	display: inline-block;
+    	padding: 15px 15px 0px 0px;
+    	font-size: 1em;
+  	}
+
+  	/* media queries for main navigation*/
+  	ul.top-nav.fa-ul.responsive {
+  		position: relative;
+	}
+  	ul.top-nav.fa-ul.responsive li.hamburger {
+    	position: absolute;
+    	right: 0;
+    	top: 0;
+    	border-bottom: none;
+	}
+	#hamburger-button a{
+		border-bottom: none;
+		padding-bottom: 20px;
+	}
+  	ul.top-nav.fa-ul.responsive li {
+   		float: none;
+    	display: inline;
+    	
+	}
+  	ul.top-nav.fa-ul.responsive li a {
+    	display: block;
+    	text-align: center;
+    	padding-bottom: 20px;
+    	border-bottom: 1px solid #4c4c4c;
+  	}
+  	ul.top-nav.fa-ul.responsive li:nth-child(2) a {
+  		padding-top: 10px;
+  		border-top: 1px solid #4c4c4c;
+  		margin-top: 20px;
+  	}
+  	ul.top-nav.fa-ul.responsive li:first-child {
+  		display: none;
+  	}
+  	ul.top-nav.fa-ul.responsive li:last-child {
+  		display: none;
+  	}
+
+}
+
 
 /*filters*/ 
 
@@ -163,11 +254,12 @@ h3 {
 }
 
 .filter-header {
-	font-weight: 400;
+	font-family: "Roboto", sans-serif;
 	margin: 0 0 10px 0;
 	color: white;
 	text-align: center;
 	padding: 0;
+	font-size: 1em;
 
 }
 
@@ -180,8 +272,8 @@ h3 {
     display: inline-block;
     color: black;
     opacity: 1;
-    padding: 5px 10% 5px 15%;
-    margin: 5px 45px 10px 45px;
+    padding: 5px;
+    margin: 5px 15% 10px 15%;
     background-color: white;
     border-radius: 2em;
     font-family: "Roboto", sans-serif;
@@ -218,8 +310,8 @@ h3 {
 	overflow: auto;
 	list-style-type: none;
 	-webkit-padding-start: 0px;
-	width: 85%;
-	margin-left: -15%;
+    width: 89%;
+    margin-left: 3%;
 }
 
 .dropdown-content li {
@@ -272,15 +364,15 @@ input[type="checkbox"] {
 
 #slider-filter {
 	position: relative;
-	margin: 10px 25px 10px 25px;
+	margin: 10px 10% 10px 10%;
 }
 
 #slider-value {
-	background-color: transparent;
+	background-color: #4c4c4c;
 	border: none;
 	color: white;
-	margin: 10px 46%;
 	outline: none;
+	border-radius: 0;
 }
 
 hr {
@@ -298,7 +390,24 @@ hr {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
 	outline: none;
+	cursor: pointer;
 }
+
+/*media queries for filters*/
+@media screen and (max-width:680px) {
+	.filter-nav {
+		height: 600px;
+	}
+
+	label {
+		padding-left: 10%;
+	}
+
+	input[type="checkbox"] {
+		margin: 5px 5% 5px 29%;
+	}
+}
+
 
 /*list of playlists displayed on homepage*/
 
@@ -348,6 +457,10 @@ h5 {
 }
 
 /*slide reveal styling -- individual playlist display*/
+
+.slider-mask {
+	display: none;
+}
 
 .slider-class {
 	background-color: black;
@@ -476,8 +589,13 @@ input[type="number"], input[type="text"] {
 	margin: 10px 25%;
 }
 
-#modal-pace-dropdown ul, #modal-genre-dropdown ul {
-	margin-left: -22%;
+
+.validation-warning-mask {
+	display: none;
+}
+
+#validation-warning {
+	color: #00c2b2;
 }
 
 #generate-playlist {

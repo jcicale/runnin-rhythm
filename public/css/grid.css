@@ -106,12 +106,11 @@ element total widths and heights now include padding and border
 }
 
 /* define mobile */
-@media only screen and (max-width: 768px) {
-    [class*="col-"] {
-        width: 100%;
+@media only screen and (max-width: 680px) {
+    .col-4 {
+        width: 95%;
+        margin: 10px 2.5% 0 2.5%;
     }
 
-    [class*="col-"] + [class*="col-"] {
-        margin-left:0;
-    }
+
 }
