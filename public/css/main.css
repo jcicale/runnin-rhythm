@@ -238,7 +238,7 @@ ul.top-nav li.hamburger {
 /*filters*/ 
 
 .filter-nav {
-	height: 550px;
+	height: 625px;
 	background-color: black;
 	opacity: .7;
 	margin: 15px 0 0 30px;
@@ -379,24 +379,32 @@ hr {
 	width: 80%;
 }
 
-#filter-button {
+#filter-button, #reset-button {
 	background-color: #00c2b2;
 	border: none;
 	border-radius: 2em;
 	padding-top: 3%;
 	padding-bottom: 3%;
 	color: white;
-	margin: 5% 0 5% 13%;
+	margin: 10px 0 10px 13%;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
 	outline: none;
 	cursor: pointer;
 }
 
+#length-filter-note {
+	font-size: 9px;
+	color: white;
+	text-align: center;
+	padding: 0 5px;
+}
+
+
 /*media queries for filters*/
 @media screen and (max-width:680px) {
 	.filter-nav {
-		height: 600px;
+		height: 700px;
 	}
 
 	label {
@@ -533,7 +541,6 @@ caption {
 
 
 .row td {
-	text-align: center;
 	font-weight: 300;
 	font-family: 'Open Sans', sans-serif;
 	padding: 10px;

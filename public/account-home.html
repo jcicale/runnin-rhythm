@@ -102,13 +102,13 @@
 			<hr>
 			<div class="filters" id="length-filter">
 				<h4 class="filter-header">Length (Miles)</h4>
-				<input id="slider-filter" class="col-16" type="range" min="0" max="20" step=".25" value="3" onchange="updateLengthFilter(this.value)"/>
-				<input type="text" id="slider-value" value="3" onchange="updateSlider(this.value)">
+				<input id="slider-filter" class="col-16" type="range" min="0" max="20" step=".25" value="0" onchange="updateLengthFilter(this.value)"/>
+				<input type="text" id="slider-value" value="0" onchange="updateSlider(this.value)">
+				<p id="length-filter-note"> *Runs returned will be greater than or equal to this value. </p>
 			</div>
 			<hr>
-			<form>
-					<input type="submit" name="filter-button" id="filter-button" class="col-15">		
-			</form>
+			<button class="submit-button col-15" id="filter-button">Submit</button>
+			<button class="submit-button col-15" id="reset-button">Reset Filters</button>		
 		</div>
 	</nav>
 	<section class="col-15 flex-container" id="playlists-container">

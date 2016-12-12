@@ -65,6 +65,39 @@ function populateDropdowns() {
 	}
 };
 
+//filter functionality
+$("#filter-button").on("click", function(callback) {
+  var filteredLength = $("#slider-filter").val();
+  $(".playlist-info-length").each(function() {
+      var currentLength = $(this).html();
+      currentLength = parseInt(currentLength.split(" ")[0]);
+      if (!($(this).is(":visible")) && currentLength > filteredLength) {
+        $(this).parent().parent().parent().show();
+      }     
+      if (currentLength < filteredLength) {
+        $(this).parent().parent().parent().hide();
+      }
+  });
+  var filteredGenre = $("#filter-genre-dropdown-title").html();
+  if (filteredGenre != "Select Genre") {
+    $(".playlist-info-genre").each(function() {
+      var currentGenre = $(this).html();
+      if (currentGenre != filteredGenre) {
+        $(this).parent().parent().parent().hide();
+      } else if (currentGenre == filteredGenre) {
+        $(this).parent().parent().parent().show();
+      }
+    });
+  }
+});
+
+$("#reset-button").on("click", function() {
+  $(".background").each(function() {
+    $(this).show();
+  })
+  $("#filter-genre-dropdown-title").html("Select Genre");
+});
+
 //generate playlist button
 $("#generate-playlist").on("click", function(){
 	var playlistName = $("#playlist-name").val();
@@ -133,7 +166,6 @@ function updateSlider(val) {
 //playlist slide panel
 var slider = $('#slider').slideReveal({
 	position: "right",
-	top: 66,
 	width: '65%',
 	push: false,
 	overlay: true,
@@ -157,9 +189,9 @@ function addPlaylist(playlistObject) {
 		function addInformation(playlistObject) {
 			var $information = $("<div></div>");
 			$information.append("<h4>" + playlistObject.name +"</h4>");
-			$information.append("<h5>" + playlistObject.pace +"</h5>");
-			$information.append("<h5>" + playlistObject.length +"</h5>");
-			$information.append("<h5>" + playlistObject.genre +"</h5>");
+			$information.append("<h5 class='playlist-info-pace'>" + playlistObject.pace +"</h5>");
+			$information.append("<h5 class='playlist-info-length'>" + playlistObject.length +"</h5>");
+			$information.append("<h5 class='playlist-info-genre'>" + playlistObject.genre +"</h5>");
 			$information.addClass("playlist-info");
 			return $information;
 		}
@@ -376,6 +408,7 @@ function loadUser() {
       		'Authorization': 'Bearer ' + access_token
     	},
     	success: function(response) {
+        console.log(response.images[0].url);
       		$('#avatar-img').attr('src', response.images[0].url);
           userID = response.id;
     	}
