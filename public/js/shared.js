@@ -25,7 +25,7 @@ function createModalGenreClickListener(i) {
 
 function createPaceClickListener(i) {
 	return function() {
-		$("#modal-pace-dropdown-title").html(paces[i] + " min");
+		$("#modal-pace-dropdown-title").html(paces[i] + " pace");
 		$(".dropdown").blur();
 	};
 };
@@ -58,7 +58,7 @@ function populateDropdowns() {
 	var paceLength = paces.length;
 	for (var i = 0; i < paceLength; i ++) {
 		var $listItem = $("<li></li>");
-		var $button = $("<button>" + paces[i] + " min" + "</button>");
+		var $button = $("<button>" + paces[i] + " pace" + "</button>");
 		$listItem.append($button);
 		$("#modal-pace-dropdown ul").append($listItem);
 		$listItem.on("click", createPaceClickListener(i));
@@ -96,6 +96,8 @@ $("#reset-button").on("click", function() {
     $(this).show();
   })
   $("#filter-genre-dropdown-title").html("Select Genre");
+  $("#slider-filter").val(0);
+  $("#slider-value").val(0);
 });
 
 //generate playlist button
@@ -231,86 +233,86 @@ function onDocumentReady() {
 
 function convertPaceToTempo(paceSelection) {
 	switch (paceSelection) {
-  		case "6:00 min":
+  		case "6:00 pace":
     		return {min : 93, max : 96};
     		break;
-  		case "6:15 min":
+  		case "6:15 pace":
     		return {min : 92, max : 95};
     		break;
-  		case "6:30 min":
+  		case "6:30 pace":
     		return {min : 91, max : 94};
     		break;
-  		case "6:45 min":
+  		case "6:45 pace":
     		return {min : 89, max : 92};
     		break;     		
-  		case "7:00 min":
+  		case "7:00 pace":
     		return {min : 88, max : 91};
     		break;
-  		case "7:15 min":
+  		case "7:15 pace":
     		return {min : 87, max : 90};
     		break;
-  		case "7:30 min":
+  		case "7:30 pace":
     		return {min : 86, max : 89};
     		break;
-  		case "7:45 min":
+  		case "7:45 pace":
     		return {min : 84, max : 87};
     		break;     		
-  		case "8:00 min":
+  		case "8:00 pace":
     		return {min : 83, max : 86};
     		break;
-  		case "8:15 min":
+  		case "8:15 pace":
     		return {min : 82, max : 85};
     		break;
-  		case "8:30 min":
+  		case "8:30 pace":
     		return {min : 81, max : 84};
     		break;
-  		case "8:45 min":
+  		case "8:45 pace":
     		return {min : 79, max : 82};
     		break;     		
-  		case "9:00 min":
+  		case "9:00 pace":
     		return {min : 78, max : 81};
     		break;
-  		case "9:15 min":
+  		case "9:15 pace":
     		return {min : 77, max : 80};
     		break;
-  		case "9:30 min":
+  		case "9:30 pace":
     		return {min : 76, max : 79};
     		break;
-  		case "9:45 min":
+  		case "9:45 pace":
     		return {min : 74, max : 77};
     		break;     		
-  		case "10:00 min":
+  		case "10:00 pace":
     		return {min : 73, max : 76};
     		break;
-  		case "10:15 min":
+  		case "10:15 pace":
     		return {min : 72, max : 75};
     		break;
-  		case "10:30 min":
+  		case "10:30 pace":
     		return {min : 71, max : 74};
     		break;
-  		case "10:45 min":
+  		case "10:45 pace":
     		return {min : 70, max : 73};
     		break;     		
-  		case "11:00 min":
+  		case "11:00 pace":
     		return {min : 69, max : 72};
     		break;    
-  		case "11:15 min":
+  		case "11:15 pace":
     		return {min : 68, max : 71};
     		break;
-  		case "11:30 min":
+  		case "11:30 pace":
     		return {min : 67, max : 70};
     		break;
-  		case "11:45 min":
+  		case "11:45 pace":
     		return {min : 66, max : 69};
     		break;     		
-  		case "12:00 min":
+  		case "12:00 pace":
     		return {min : 65, max : 68};
     		break;     				
 	}
 }
 
 function convertPaceSelectionToMilliseconds(paceSelection) {
-  var stringPace = paceSelection.replace(" min", "");
+  var stringPace = paceSelection.replace(" pace", "");
   var parts = stringPace.split(":");
   var minutes = parseInt(parts[0]);
   var seconds = parseInt(parts[1]);
@@ -442,6 +444,7 @@ function showPlaylist(playlist) {
   $("#total-time").html(convertMillisecondsToString(playlist.duration));
   $("#num-songs").html(playlist.tracks.length + " songs");
   $("#slider-table .song-row").empty();
+  $('.song-row').remove();
 
   for (var i = 0; i < playlist.tracks.length; i++) {
     var track = playlist.tracks[i];
